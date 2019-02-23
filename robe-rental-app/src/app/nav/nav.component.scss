@@ -1,4 +1,4 @@
-header {
+/* header {
     background: #7700FF;
 
     .logo {
@@ -26,5 +26,20 @@ header {
                 }
             }
         }
+    }
+} */
+
+.bgColor{
+    background-color: #ADD8E6 !important;
+}
+
+
+.width40{
+    width:45%;
+}
+
+.mat-tab-link{
+    &:focus {
+        font-weight:bold;
     }
 }

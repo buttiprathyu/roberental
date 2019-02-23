@@ -30,34 +30,12 @@ $robe-rental-app-theme: mat-light-theme($robe-rental-app-primary, $robe-rental-a
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
-body, html {
-    height: 100%;
+
+
+html, body {
+    max-width: 100%;
+    //overflow-x: hidden;
     margin: 0 auto;
+
 }
 
-body {
-    font-family: 'Montserrat';
-    font-size: 18px;
-}
-
-a {
-    text-decoration: none;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 1.3em;
-    display: grid;
-    grid-template-columns: 30% auto;
-
-    a {
-        color: white;
-    }
-}
-
-section {
-    width: 80%;
-    margin: 0 auto;
-    padding: 2em;
-}
