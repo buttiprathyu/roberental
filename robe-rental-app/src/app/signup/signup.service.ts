@@ -6,19 +6,20 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class SignupService {
 
   	private getURL = 'http://reqres.in/api/login'; // change this URL
     private postURL = 'https://reqres.in/api/users'; //Change this URL
 
     constructor(private http: HttpClient) { }
 
-	getLoginDetails() {
+	getSignupDetails() {
 	    return this.http.get(this.getURL).toPromise().then((response) => response);      
 	}
 
-  	postLoginDetails(data):Observable<any>{
+  	postSignupDetails(data):Observable<any>{
   		let body = data;
     	return this.http.post<any>(this.postURL, body).pipe(map(response => {return response}));
  	}	
 }
+

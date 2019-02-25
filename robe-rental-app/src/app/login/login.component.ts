@@ -10,16 +10,14 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
 	email: string;
 	password: string;
-	userRegistered: boolean = true;
 	showError: boolean = false;
 	errorText: string;
-	loggedUser: Object ; // = { "successMsg" : "Success","token": "QpwL5tke4Pnpja7X"};
+	loggedUser: Object;// = {"successMsg" : "Success","token": "QpwL5tke4Pnpja7X"};
 
 
   	constructor(private router: Router, public loginService: LoginService) { }
   	
   	login() : void {
-  		this.userRegistered = true;
   		let data = {"email": this.email ,"password": this.password};
   		this.loginService.postLoginDetails(data).subscribe(data => {
 		        this.loggedUser = data;
@@ -33,7 +31,7 @@ export class LoginComponent implements OnInit {
 	}
 
 	register() : void {
-	    this.userRegistered = false;
+	    this.router.navigate(["signup"]);
 	}
 
 	logout(): void {

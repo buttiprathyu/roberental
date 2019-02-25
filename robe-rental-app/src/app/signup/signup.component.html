@@ -1,10 +1,24 @@
 <mat-card class="example-card">
    <mat-card-header>
-     <mat-card-title>Sign In</mat-card-title>
+     <mat-card-title>Sign Up</mat-card-title>
    </mat-card-header>
   <form name="form" #f="ngForm" (ngSubmit)="f.form.valid">
     <mat-card-content>
       <table cellspacing="0" class="width50">
+      	<tr>
+          <td>
+             <mat-form-field class="width100">
+               <input matInput type="text" placeholder="First Name" [(ngModel)]="firstname" name="firstname" required>
+             </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+             <mat-form-field class="width100">
+               <input matInput type="text" placeholder="Last Name" [(ngModel)]="lastname" name="lastname" required>
+             </mat-form-field>
+          </td>
+        </tr>
         <tr>
           <td>
              <mat-form-field class="width100">
@@ -24,8 +38,7 @@
     </mat-card-content>
     <div class="errorMsg" *ngIf="showError">{{errorText}}</div>
     <mat-card-actions>
-      <button mat-raised-button class="colorBtn" (click)="login()" [disabled]="f.form.pristine || f.form.invalid">Sign In</button>
-      <button mat-raised-button class="colorBtn" (click)="register()">Sign Up</button>
+      <button mat-raised-button class="colorBtn" (click)="register()" [disabled]="f.form.pristine || f.form.invalid">Sign Up</button>
     </mat-card-actions>
   </form>
 </mat-card>

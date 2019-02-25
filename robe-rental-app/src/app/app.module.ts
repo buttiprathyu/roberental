@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { MyaccountComponent } from './myaccount/myaccount.component'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     TeamComponent,
     CartComponent,
     LoginComponent,
-    MyaccountComponent
+    MyaccountComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
