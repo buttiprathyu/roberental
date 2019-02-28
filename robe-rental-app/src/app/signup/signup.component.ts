@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
 	lastname: string;
 	showError: boolean = false;
 	errorText: string;
-	signedUser: Object ;//= {"successMsg" : "Success","token": "QpwL5tke4Pnpja7X"};
+	signedUser: Object = {"successMsg" : "Success","token": "QpwL5tke4Pnpja7X"};
 
 
   	constructor(private router: Router, public signupService: SignupService) { }
