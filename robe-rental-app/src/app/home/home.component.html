@@ -1,11 +1,11 @@
 <div class="container" >
- 	<mat-card class="card-picture" *ngFor="let picture of pictures">
+ 	<mat-card class="card-picture" *ngFor="let robe of robeList">
 	    <!-- <mat-card-title>{{picture.title}}</mat-card-title> -->
 	     <!-- <mat-icon fxFlex="10%">mode_edit</mat-icon> -->
-        <img mat-card-image [src]="picture.img">
+        <img mat-card-image [src]="robe.robeImg">
         <div>
-        	<span>Rent : {{picture.rent}}</span> &nbsp;&nbsp;
-        	<span>Buy : {{picture.buy}}</span>
+        	<span>Rent : {{robe.rent}}</span> &nbsp;&nbsp;
+        	<span>Buy : {{robe.buy}}</span>
   	    </div>
         <button class="raised-btn" mat-raised-button>Add to Cart</button>   
 	</mat-card>
