@@ -14,11 +14,11 @@ export class SignupComponent implements OnInit {
 	lastname: string;
 	showError: boolean = false;
 	errorText: string;
-	signedUser: Object ;//= {"successMsg" : "Success","token": "QpwL5tke4Pnpja7X"};
+	signedUser:  {"successMsg" : string ,"token": string};
 
 
   	constructor(private router: Router, public signupService: SignupService) { }
-  	
+
   	register() : void {
   		let data = {"firstname" : this.firstname, "lastname": this.lastname, "email": this.email ,"password":this.password };
   		this.signupService.postSignupDetails(data).subscribe(data => {

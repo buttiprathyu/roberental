@@ -12,11 +12,11 @@ export class LoginComponent implements OnInit {
 	password: string;
 	showError: boolean = false;
 	errorText: string;
-	loggedUser: Object;// = {"successMsg" : "Success","token": "QpwL5tke4Pnpja7X"};
+	loggedUser:  {"successMsg" : string,"token": string};
 
 
   	constructor(private router: Router, public loginService: LoginService) { }
-  	
+
   	login() : void {
   		let data = {"email": this.email ,"password": this.password};
   		this.loginService.postLoginDetails(data).subscribe(data => {

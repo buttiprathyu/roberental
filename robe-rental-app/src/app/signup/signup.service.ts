@@ -9,17 +9,17 @@ import { map } from 'rxjs/operators';
 export class SignupService {
 
   	private getURL = 'http://reqres.in/api/login'; // change this URL
-    private postURL = 'https://reqres.in/api/users'; //Change this URL
+    private postURL = 'api/signup'; //Change this URL
 
     constructor(private http: HttpClient) { }
 
 	getSignupDetails() {
-	    return this.http.get(this.getURL).toPromise().then((response) => response);      
+	    return this.http.get(this.getURL).toPromise().then((response) => response);
 	}
 
   	postSignupDetails(data):Observable<any>{
   		let body = data;
     	return this.http.post<any>(this.postURL, body).pipe(map(response => {return response}));
- 	}	
+ 	}
 }
 
