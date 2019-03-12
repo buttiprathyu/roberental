@@ -3,10 +3,17 @@
 	    <!-- <mat-card-title>{{picture.title}}</mat-card-title> -->
 	     <!-- <mat-icon fxFlex="10%">mode_edit</mat-icon> -->
         <img mat-card-image [src]="robe.robeImg">
-        <div>
-        	<span>Rent : {{robe.rent}}</span> &nbsp;&nbsp;
-        	<span>Buy : {{robe.buy}}</span>
+        <div class="margin10">{{robe.robeMaterialDesc}}</div>
+
+        <div class="margin10">
+        	<span><b>Rent :</b> ${{robe.rentPrice}}</span>
   	    </div>
+  	    <div class="margin10"><span><b>Buy :</b> ${{robe.buyPrice}}</span></div>
+  	    <div class="margin10">
+  	    	<span><b>Size : </b>{{robe.robeSize}}</span> 
+  	    </div>
+  		<div class="margin10"><b>Material : </b>{{robe.robeMaterial}}</div>
+  		<div class="margin10"><b>Care :</b> {{robe.robeCare}}</div>
         <button class="raised-btn" mat-raised-button>Add to Cart</button>   
 	</mat-card>
 </div>

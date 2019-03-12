@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { SignupService } from './signup.service';
 
+export interface myServerMsg{
+	successMsg : string,
+	token : string
+};
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -14,7 +19,8 @@ export class SignupComponent implements OnInit {
 	lastname: string;
 	showError: boolean = false;
 	errorText: string;
-	signedUser:  {"successMsg" : string ,"token": string};
+	signedUser: myServerMsg;
+	//signedUser:  Object;//{"successMsg" : string ,"token": string};
 
 
   	constructor(private router: Router, public signupService: SignupService) { }

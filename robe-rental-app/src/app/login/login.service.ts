@@ -8,10 +8,8 @@ import { map } from 'rxjs/operators';
 })
 export class LoginService {
 
-  	private getURL = 'http://reqres.in/api/login'; // change this URL
-  //  private postURL = 'https://reqres.in/api/users'; //Change this URL
-  //  private url = '/api/login'; // change this URL
-    private postURL = '/api/login'; //Change this URL
+  	private getURL = '/api/login'; 
+    private postURL = '/api/login'; 
     constructor(private http: HttpClient) { }
 
 	getLoginDetails() {
