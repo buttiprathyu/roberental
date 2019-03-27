@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 
 export interface myRobe{
-  robeID? : number,
+  email? : string,
   robeTitle? : string,
   robeImg? : string,
   rentPrice? : number,
@@ -20,9 +20,34 @@ export interface myRobe{
 })
 export class HomeComponent implements OnInit {
 
-  robeList : myRobe[]; 
+  robeList : myRobe; 
 
-  
+  /*robeList =  [
+    {
+      "robeID": "1",
+      "robeTitle": "A natural view",
+      "robeImg": "assets/paris.jpg",
+      "rentPrice": "100",
+      "buyPrice": "200",
+      "robeSize": "M",
+      "robeMaterialDesc" : "This robe has a round neck, long sleeves",
+      "robeMaterial" :  "Cotton",
+      "robeCare" : "Machine-wash"
+
+    },
+    {
+      "robeID": "2",
+     "robeTitle": "Newspaper",
+      "robeImg": "assets/paris.jpg",
+      "rentPrice": "100",
+      "buyPrice": "200",
+      "robeSize": "M",
+      "robeMaterialDesc" : "This robe has a round neck, long sleeves",
+      "robeMaterial" :  "Cotton",
+      "robeCare" : "Machine-wash"
+    }
+   ]*/
+
 
   constructor(public homeService: HomeService) {}
       
@@ -35,9 +60,9 @@ export class HomeComponent implements OnInit {
                 //this.errorText = "Could not fetch the garments. Please try again.";
             }
         }); 
-    }     
+    }    
 
-  ngOnInit() { this.getDetails();
+  ngOnInit() { //this.getDetails();
   }
 
 }

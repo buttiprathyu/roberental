@@ -138,9 +138,10 @@ export class MyaccountComponent implements OnInit {
 
 
 	sellGarment() : void{
-		
+		let emailVal = localStorage.getItem('email');
+		console.log(this.robeImg);
 		let sellData = {
-	      	"email" : this.email,
+	      	"email" : emailVal,
 	      	"robeImg" : this.robeImg,
 	      	"robeTitle": this.title,
       		"rentPrice": this.rentprice,
