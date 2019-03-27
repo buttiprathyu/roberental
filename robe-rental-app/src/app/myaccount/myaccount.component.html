@@ -1,4 +1,111 @@
-<mat-card class="about">
-	<mat-card-title>Page Under Construction</mat-card-title>
-		<mat-card-content> This page will contain the details of the user and will provide an option to upload the garment</mat-card-content>
-</mat-card>
+<mat-tab-group>
+	<mat-tab label="Personal Details" (click)="getPersonalDetails()">
+		<form name="personalform" #f="ngForm" (ngSubmit)="f.form.valid" class="accountDiv">
+			<div class="personalDiv">
+				<div class="showMsg" *ngIf="showMsg">{{displayMsg}}</div>
+				<div>
+					<mat-form-field class="width60">
+				    	<input matInput type="text" placeholder="First Name" [(ngModel)]="firstname" name="firstname" required>
+				  	</mat-form-field>
+			    </div>
+			    <div>
+				  	<mat-form-field class="width60">
+				       	<input matInput type="text" placeholder="Last Name" [(ngModel)]="lastname" name="lastname" required>
+				    </mat-form-field>
+				</div>
+				<div>
+				    <mat-form-field class="width60">
+				       	<input matInput type="text" placeholder="Email" [(ngModel)]="email" name="email" required email>     
+				    </mat-form-field>
+				</div>
+				<div>
+					<mat-form-field class="width60">
+				       	<input matInput type="text" placeholder="Address Line 1" [(ngModel)]="address1" name="address1" required>     
+				    </mat-form-field>
+				</div>
+				<div>
+					<mat-form-field class="width60">
+				       	<input matInput type="text" placeholder="Address Line 2" [(ngModel)]="address2" name="address2">     
+				    </mat-form-field>
+				</div>
+				<div>
+					<mat-form-field class="width60">
+				       	<input matInput type="text" placeholder="City" [(ngModel)]="city" name="city" required>   
+				    </mat-form-field>
+				</div>
+				<div>
+					<mat-form-field class="width60">
+				       	<input matInput type="text" placeholder="State" [(ngModel)]="state" name="state" required>
+				    </mat-form-field>
+				</div> 
+				<div>
+					<mat-form-field class="width60">
+				       	<input matInput type="text" pattern="[0-9]{5}" minlength="5" maxlength="5" placeholder="Zip Code" [(ngModel)]="zipcode" name="zipcode" required > 
+				       	<mat-hint>Accepts only 5-digit number</mat-hint>     
+				    </mat-form-field>
+				</div>
+				<div class="buttonDiv">
+					<button mat-raised-button class="colorBtn" (click)="createAccount()" [disabled]="f.form.pristine || f.form.invalid">Create Account</button>
+				</div>
+			</div>
+		</form>
+	</mat-tab>
+	<mat-tab label="Sell or Rent Your Garment"> 
+		<form name="garmentform" #f="ngForm" (ngSubmit)="f.form.valid" class="accountDiv">
+			<div class="personalDiv">
+				<div class="showMsg" *ngIf="showMsg">{{displayMsg}}</div>
+				<div>
+					<mat-form-field class="width60">
+				    	<input matInput type="text" placeholder="Title For Your Garment" [(ngModel)]="title" name="title" required>
+				  	</mat-form-field>
+			    </div>
+			    <div>
+				  	<mat-form-field class="width60">
+				       	<input matInput type="text" placeholder="Rent Price" [(ngModel)]="rentprice" name="rentprice" pattern="[0-9]+(\.[0-9]{1,2})?" minlength="1" required>
+				    </mat-form-field>
+				</div>
+				<div>
+				    <mat-form-field class="width60">
+				       	<input matInput type="text" placeholder="Buy Price" [(ngModel)]="buyprice" name="buyprice" pattern="[0-9]+(\.[0-9]{1,2})?" minlength="1" required>
+				    </mat-form-field>
+				</div>
+				<div>
+					<mat-form-field class="width60">
+				       	<input matInput type="text" placeholder="Size of the garment" [(ngModel)]="size" name="size" pattern="[SMLX]{1,4}" minlength="1" maxlength="4" required>  
+				       	<mat-hint>Accepts only in the format S,M,L,XL,XXL,XXXL</mat-hint>    
+				    </mat-form-field>
+				</div>
+				<div>
+					<mat-form-field class="width60">
+				       	<input matInput type="text" placeholder="Material Description" [(ngModel)]="materialdesc" name="materialdesc" required="">     
+				    </mat-form-field>
+				</div>
+				<div>
+					<mat-form-field class="width60">
+				       	<input matInput type="text" placeholder="Type of the Material" [(ngModel)]="materialtype" name="materialtype" required>   
+				    </mat-form-field>
+				</div>
+				<div>
+					<mat-form-field class="width60">
+				       	<input matInput type="text" placeholder="Garment Care" [(ngModel)]="care" name="care" required>
+				    </mat-form-field>
+				</div>
+				<div>
+					<div class="width60">
+				       	<img [src]="url" height="200" *ngIf="url"> 
+						<label class="image-upload-container btn btn-bwm">
+						  	<div>Select Image</div>
+						  	<input #imageInput
+						        type="file"
+						        accept="image/*"
+						        (change)="processFile(imageInput)">
+						</label>
+				    </div>
+				</div> 
+				<div class="buttonDiv">
+					<button mat-raised-button class="colorBtn" (click)="sellGarment()" [disabled]="f.form.pristine || f.form.invalid">Sell or Rent your Garment</button>
+				</div>
+			</div>
+		</form>
+	</mat-tab>
+</mat-tab-group>

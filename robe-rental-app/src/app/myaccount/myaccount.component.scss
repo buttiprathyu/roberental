@@ -1,4 +1,31 @@
-.about{
-	margin:20px;
-	border: 1px solid #F0F8FF;
+.accountDiv{
+	margin: 3% 10%;
+}
+
+.width60{
+	width:60%;
+}
+
+.showMsg {	
+    font-size: 12px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    margin-bottom: 10px;
+}
+
+.colorBtn {
+	background-color : #ADD8E6;
+	color: black;
+}
+
+.personalDiv, .creditDiv{
+	border : 2px solid #ADD8E6;
+	padding : 3%;
+}
+
+.buttonDiv{
+	padding : 5% 0%;
+}
+
+.surround30{
+	padding-bottom: 3%;
 }

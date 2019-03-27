@@ -13,13 +13,13 @@ export class SignupService {
 
     constructor(private http: HttpClient) { }
 
-	getSignupDetails() {
+	  getSignupDetails() {
 	    return this.http.get(this.getURL).toPromise().then((response) => response);
-	}
+	  }
 
   	postSignupDetails(data):Observable<any>{
   		let body = data;
     	return this.http.post<any>(this.postURL, body).pipe(map(response => {return response}));
- 	}
+ 	  }
 }
 

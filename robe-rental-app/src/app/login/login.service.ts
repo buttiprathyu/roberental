@@ -10,14 +10,15 @@ export class LoginService {
 
   	private getURL = '/api/login'; 
     private postURL = '/api/login'; 
+    
     constructor(private http: HttpClient) { }
 
-	getLoginDetails() {
+	  getLoginDetails() {
 	    return this.http.get(this.getURL).toPromise().then((response) => response);
-	}
+	  }
 
   	postLoginDetails(data):Observable<any>{
   		let body = data;
     	return this.http.post<any>(this.postURL, body).pipe(map(response => {return response}));
- 	}
+ 	  }
 }

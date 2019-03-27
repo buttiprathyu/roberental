@@ -128,16 +128,20 @@ export class HomeComponent implements OnInit {
     }
   ]; // till here
 
-  constructor(public homeService: HomeService) { }
-  
-  //uncomment these lines to get your backend code working
-  /* this.homeService.getRobeDetails().subscribe(data => {
+  constructor(public homeService: HomeService) {
+      //uncomment these lines to get your backend code working
+   /* this.homeService.getRobeDetails().subscribe(data => {
             this.robeList = data;
           } else {
               this.showError = true;
-              this.errorText = "Invalid Credentials. Please check your email/password.";
+              this.errorText = "Could not fetch the garments. Please try again.";
           }
       }); */ //end
+
+
+  }
+  
+  
   
 
   ngOnInit() {
