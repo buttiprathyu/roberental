@@ -21,7 +21,7 @@
         <a mat-tab-link routerLink="/team">Team</a>
         <a mat-tab-link routerLink="/cart">Cart</a>
         <a mat-tab-link routerLink="/login">Sign In</a>
-        <a mat-tab-link routerLink="/myaccount">My Account</a>
+        <a mat-tab-link routerLink="/myaccount" ng-if="canDisplayRoute">My Account</a>
 	</nav>
 
   </mat-toolbar-row>
