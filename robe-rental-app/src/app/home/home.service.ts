@@ -8,11 +8,12 @@ import { map } from 'rxjs/operators';
 })
 export class HomeService {
 
-  	private getURL = 'http://reqres.in/api/login'; // change this URL
+  	private getURL = 'api/robeList'; 
    
     constructor(private http: HttpClient) { }
 
 	getRobeDetails() {
+		
 	    return this.http.get(this.getURL).toPromise().then((response) => response);      
 	}
 }
