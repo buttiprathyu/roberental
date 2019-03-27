@@ -51,7 +51,7 @@
 		</form>
 	</mat-tab>
 	<mat-tab label="Sell or Rent Your Garment"> 
-		<form name="garmentform" #f="ngForm" (ngSubmit)="f.form.valid" class="accountDiv">
+		<form name="garmentform" #f="ngForm" (ngSubmit)="f.form.valid" class="accountDiv" enctype="multipart/form-data">
 			<div class="personalDiv">
 				<div class="showMsg" *ngIf="showMsg">{{displayMsg}}</div>
 				<div>
