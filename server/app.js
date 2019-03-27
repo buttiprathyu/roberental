@@ -6,6 +6,7 @@ const url = 'mongodb://localhost:27017/robe'; //without authentication
 //const url ='mongodb://localhost:27017/robedata';
 var bcrypt = require('bcrypt');
 const User = require('./model/user');
+const Robe_image = require('./model/robe_image');
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -90,6 +91,15 @@ app.post('/api/login', (req, res) => {
 	});
 
 })
+
+app.get('/api/robeList', (req,res)=>{
+	mongoose.connect(url,{
+		useNewUrlParser: true
+	}, function (err){
+		console.log("I can send");
+	});
+})
+
 
 app.listen(3000, () => console.log('Blog server running on port 3000!'))
 /*
