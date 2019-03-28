@@ -165,8 +165,8 @@ export class MyaccountComponent implements OnInit {
   	
 
   	
-  ngOnInit(){this.getPersonalDetails();}
+  ngOnInit(){}
 
- 
+ //this.getPersonalDetails();
 
 }

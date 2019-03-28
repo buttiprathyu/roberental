@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 
+
 export interface myRobe{
   email? : string,
   robeTitle? : string,
@@ -21,10 +22,10 @@ export interface myRobe{
 export class HomeComponent implements OnInit {
 
   robeList : myRobe; 
-
+  
   /*robeList =  [
     {
-      "robeID": "1",
+      "email": "1@1.com",
       "robeTitle": "A natural view",
       "robeImg": "assets/paris.jpg",
       "rentPrice": "100",
@@ -36,8 +37,8 @@ export class HomeComponent implements OnInit {
 
     },
     {
-      "robeID": "2",
-     "robeTitle": "Newspaper",
+      "email": "1@1.com",
+      "robeTitle": "Newspaper",
       "robeImg": "assets/paris.jpg",
       "rentPrice": "100",
       "buyPrice": "200",
@@ -51,7 +52,7 @@ export class HomeComponent implements OnInit {
 
   constructor(public homeService: HomeService) {}
       
-    getDetails() : void{
+   getDetails() : void{
       this.homeService.getRobeDetails().then(data => {
             if(data){
               this.robeList = data;
@@ -62,7 +63,10 @@ export class HomeComponent implements OnInit {
         }); 
     }    
 
-  ngOnInit() { //this.getDetails();
+
+  
+ 
+  ngOnInit() { this.getDetails();
   }
 
 }

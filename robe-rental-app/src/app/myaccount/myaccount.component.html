@@ -1,6 +1,6 @@
 <mat-tab-group>
 	<mat-tab label="Personal Details" (click)="getPersonalDetails()">
-		<form name="personalform" #f="ngForm" (ngSubmit)="f.form.valid" class="accountDiv">
+		<form name="personalform" #pf="ngForm" (ngSubmit)="pf.form.valid" class="accountDiv">
 			<div class="personalDiv">
 				<div class="showMsg" *ngIf="showMsg">{{displayMsg}}</div>
 				<div>
@@ -45,7 +45,7 @@
 				    </mat-form-field>
 				</div>
 				<div class="buttonDiv">
-					<button mat-raised-button class="colorBtn" (click)="createAccount()" [disabled]="f.form.pristine || f.form.invalid">Create Account</button>
+					<button mat-raised-button class="colorBtn" (click)="createAccount()" [disabled]="pf.form.pristine || pf.form.invalid">Create Account</button>
 				</div>
 			</div>
 		</form>
