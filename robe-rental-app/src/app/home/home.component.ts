@@ -21,8 +21,9 @@ export interface myRobe{
 })
 export class HomeComponent implements OnInit {
 
+
   robeList : myRobe; 
-  
+
   /*robeList =  [
     {
       "email": "1@1.com",
@@ -60,8 +61,8 @@ export class HomeComponent implements OnInit {
                 //this.showError = true;
                 //this.errorText = "Could not fetch the garments. Please try again.";
             }
-        }); 
-    }    
+        });
+    }
 
 
   

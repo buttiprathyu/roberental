@@ -4,7 +4,14 @@ const Schema = mongoose.Schema;
 // create a schema
 const userSchema = new Schema({
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  firstname:{ type: String, required: true },
+  lastname:{ type: String, required: true },
+  address1:{ type: String},
+  address2:{ type: String},
+  city:{ type: String},
+  state:{ type: String},
+  zipcode:{ type: Number}
 }, { collection : 'user' });
 
 const User = mongoose.model('User', userSchema);
