@@ -21,10 +21,16 @@ export interface myRobe{
 })
 export class HomeComponent implements OnInit {
 
+<<<<<<< Updated upstream
 
   robeList : myRobe; 
 
   /*robeList =  [
+=======
+  robeList : myRobe;
+/*
+  robeList =  [
+>>>>>>> Stashed changes
     {
       "email": "1@1.com",
       "robeTitle": "A natural view",
@@ -47,12 +53,27 @@ export class HomeComponent implements OnInit {
       "robeMaterialDesc" : "This robe has a round neck, long sleeves",
       "robeMaterial" :  "Cotton",
       "robeCare" : "Machine-wash"
+    },
+    {
+      "email": "1@1.com",
+      "robeTitle": "Newspaper",
+      "robeImg": "assets/3e3240383b126b0d777ca7c66fc1a0a8",
+      "rentPrice": "100",
+      "buyPrice": "200",
+      "robeSize": "M",
+      "robeMaterialDesc" : "This robe has a round neck, long sleeves",
+      "robeMaterial" :  "Cotton",
+      "robeCare" : "Machine-wash"
     }
-   ]*/
+   ]
 
-
+*/
   constructor(public homeService: HomeService) {}
+<<<<<<< Updated upstream
       
+=======
+
+>>>>>>> Stashed changes
    getDetails() : void{
       this.homeService.getRobeDetails().then(data => {
             if(data){
@@ -65,9 +86,16 @@ export class HomeComponent implements OnInit {
     }
 
 
+<<<<<<< Updated upstream
   
  
   ngOnInit() { this.getDetails();
   }
+=======
+  ngOnInit() { this.getDetails();}
+
+  //ngOnInit() {}
+>>>>>>> Stashed changes
 
 }
+

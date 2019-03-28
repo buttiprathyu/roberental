@@ -6,8 +6,10 @@ const url = 'mongodb://localhost:27017/robe'; //without authentication
 //const url ='mongodb://localhost:27017/robedata';
 var bcrypt = require('bcrypt');
 var multer = require('multer');
-var img_dir='/home/roy/Desktop/software_eng_proj/roberental/robe-rental-app/src/assets';
-var upload= multer({dest:img_dir});
+var img_dir = '/home/roy/Desktop/software_eng_proj/roberental/robe-rental-app/src/assets';
+var upload = multer({
+	dest: img_dir
+});
 
 const User = require('./model/user');
 const Robe_image = require('./model/robe_image');
@@ -33,8 +35,8 @@ app.post('/api/signup', (req, res) => {
 				const user = new User({
 					email: req.body.email,
 					password: hashedPassword,
-					firstname:req.body.firstname,
-					lastname : req.body.lastname
+					firstname: req.body.firstname,
+					lastname: req.body.lastname
 				})
 				user.save((err, res) => {
 					console.log(err);
@@ -97,33 +99,43 @@ app.post('/api/login', (req, res) => {
 	});
 
 })
-/*
-app.get('/api/robeList', (req,res)=>{
-	mongoose.connect(url,{
+
+app.get('/api/robeList', (req, res) => {
+	mongoose.connect(url, {
 		useNewUrlParser: true
-	}, function (err){
-		console.log("I can send");
+	}, function (err) {
+		Robe_image.find({}, function (err, all_images) {
+			if (err) throw err;
+			else if (!all_images) {
+				var err = new Error('No images');
+				err.status = 401;
+				return callback(err);
+			}
+			console.log("show all images");
+			console.log(all_images);
+			res.send(all_images);
+		})
 	});
 })
-*/
-app.post('/api/imgupload',upload.single('robeImg'), (req,res)=>{
-	mongoose.connect(url,{
+
+app.post('/api/imgupload', upload.single('robeImg'), (req, res) => {
+	mongoose.connect(url, {
 		useNewUrlParser: true
-	}, function (err){
+	}, function (err) {
 		console.log("The post request");
-		var file_path=img_dir+'/'+req.file.filename;
+		var file_path = 'assets/' + req.file.filename;
 		console.log(file_path);
 		console.log(req.file.path);
-		const robe_image=new Robe_image({
+		const robe_image = new Robe_image({
 			email: req.body.email,
-			robeTitle:req.body.robeTitle,
-			robeImg:req.file.path,
-			rentPrice:req.body.rentPrice,
-			buyPrice:req.body.buyPrice,
-			robeSize:req.body.robeSize,
-			robeMaterialDesc:req.body.robeMaterialDesc,
-			robeMaterial:req.body.robeMaterial,
-			robeCare:req.body.robeCare
+			robeTitle: req.body.robeTitle,
+			robeImg: file_path,
+			rentPrice: req.body.rentPrice,
+			buyPrice: req.body.buyPrice,
+			robeSize: req.body.robeSize,
+			robeMaterialDesc: req.body.robeMaterialDesc,
+			robeMaterial: req.body.robeMaterial,
+			robeCare: req.body.robeCare
 		});
 		robe_image.save((err, res) => {
 			console.log(err);
