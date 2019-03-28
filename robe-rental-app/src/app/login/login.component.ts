@@ -28,11 +28,7 @@ export class LoginComponent implements OnInit {
   		this.loginService.postLoginDetails(data).subscribe(data => {
 		        this.loggedUser = data;
 		        if(this.loggedUser.successMsg && this.loggedUser.token){
-<<<<<<< Updated upstream
-			     	this.router.navigate(['']);
-=======
 			     	this.router.navigate(["/"]);
->>>>>>> Stashed changes
 			    } else {
 			      	this.showError = true;
 			      	this.errorText = "Invalid Credentials. Please check your email/password.";

@@ -21,16 +21,9 @@ export interface myRobe{
 })
 export class HomeComponent implements OnInit {
 
-<<<<<<< Updated upstream
-
-  robeList : myRobe; 
-
-  /*robeList =  [
-=======
   robeList : myRobe;
 /*
   robeList =  [
->>>>>>> Stashed changes
     {
       "email": "1@1.com",
       "robeTitle": "A natural view",
@@ -69,11 +62,6 @@ export class HomeComponent implements OnInit {
 
 */
   constructor(public homeService: HomeService) {}
-<<<<<<< Updated upstream
-      
-=======
-
->>>>>>> Stashed changes
    getDetails() : void{
       this.homeService.getRobeDetails().then(data => {
             if(data){
@@ -86,16 +74,9 @@ export class HomeComponent implements OnInit {
     }
 
 
-<<<<<<< Updated upstream
-  
- 
-  ngOnInit() { this.getDetails();
-  }
-=======
   ngOnInit() { this.getDetails();}
 
   //ngOnInit() {}
->>>>>>> Stashed changes
 
 }
 
