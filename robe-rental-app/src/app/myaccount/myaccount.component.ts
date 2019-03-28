@@ -57,9 +57,12 @@ export class MyaccountComponent implements OnInit {
 
     getPersonalDetails() : void {
 
+    	this.email = localStorage.getItem('email');
+    	this.firstname = localStorage.getItem('firstname');
+    	this.lastname = localStorage.getItem('lastname');
+
 		// to get the details from myaccount API
 	  	this.myaccountService.getAccountDetails().then(data => {
-	  		console.log(data);
 		    if(data){
 		    	this.personalDetails = data;
 		    	this.firstname = this.personalDetails.firstname; 
@@ -70,18 +73,7 @@ export class MyaccountComponent implements OnInit {
 				this.city = this.personalDetails.city;
 				this.state = this.personalDetails.state;
 				this.zipcode = this.personalDetails.zipcode;
-		    } else {
-		    	// to get the details of First Name, Last Name and Email from signup API
-				this.myaccountService.getSignupDetails().then(data => {
-				console.log(data);
-				    if(data){
-				    	this.personalDetails = data;
-				    	this.firstname = this.personalDetails.firstname; 
-					  	this.lastname =  this.personalDetails.lastname; 
-					  	this.email = this.personalDetails.email;
-				    }
-				});
-		    }
+		    } 
 		});
   	}
     

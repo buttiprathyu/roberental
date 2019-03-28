@@ -27,7 +27,11 @@ export class SignupComponent implements OnInit {
 
   	register() : void {
   		let data = {"firstname" : this.firstname, "lastname": this.lastname, "email": this.email ,"password":this.password };
+  		
   		localStorage.setItem('email', this.email);
+  		localStorage.setItem('firstname', this.firstname);
+  		localStorage.setItem('lastname', this.lastname);
+
   		this.signupService.postSignupDetails(data).subscribe(data => {
 		        this.signedUser = data;
 		        if(this.signedUser.successMsg && this.signedUser.token){

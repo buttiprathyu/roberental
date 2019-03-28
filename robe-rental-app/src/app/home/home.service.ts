@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -13,8 +13,10 @@ export class HomeService {
     constructor(private http: HttpClient) { }
 
 	getRobeDetails() {
-		
-	    return this.http.get(this.getURL).toPromise().then((response) => response);      
+		const params = new HttpParams()
+        .set('email', localStorage.getItem('email'))
+	   // return this.http.get(this.getURL, {params}).toPromise().then((response) => response);  
+	    return this.http.get(this.getURL).toPromise().then((response) => response);     
 	}
 }
 

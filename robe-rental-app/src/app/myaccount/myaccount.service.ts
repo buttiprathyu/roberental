@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -15,12 +15,14 @@ export class MyaccountService {
     
     constructor(private http: HttpClient) { }
 
-    getSignupDetails() {
-      return this.http.get(this.signupURL).toPromise().then((response) => response);
-    } 
+    //getSignupDetails() {
+      //return this.http.get(this.signupURL).toPromise().then((response) => response);
+    //} 
 
 	  getAccountDetails() {
-	    return this.http.get(this.accountURL).toPromise().then((response) => response);
+      const params = new HttpParams()
+      .set('email', localStorage.getItem('email'))
+	    return this.http.get(this.accountURL,{params}).toPromise().then((response) => response);
 	  }
 
   	postAccountDetails(data):Observable<any>{
