@@ -1,0 +1,44 @@
+<mat-card class="example-card">
+   <mat-card-header>
+     <mat-card-title>Sign Up</mat-card-title>
+   </mat-card-header>
+  <form name="form" #f="ngForm" (ngSubmit)="f.form.valid">
+    <mat-card-content>
+      <table cellspacing="0" class="width50">
+      	<tr>
+          <td>
+             <mat-form-field class="width100">
+               <input matInput type="text" placeholder="First Name" [(ngModel)]="firstname" name="firstname" required>
+             </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+             <mat-form-field class="width100">
+               <input matInput type="text" placeholder="Last Name" [(ngModel)]="lastname" name="lastname" required>
+             </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+             <mat-form-field class="width100">
+               <input matInput type="text" placeholder="Email" [(ngModel)]="email" name="email" required email>     
+             </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="width100">
+              <input matInput type="password" placeholder="Password" [(ngModel)]="password" type="password" name="password"required>       
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </mat-card-content>
+    <div class="errorMsg" *ngIf="showError">{{errorText}}</div>
+    <mat-card-actions>
+      <button mat-raised-button class="colorBtn" (click)="register()" [disabled]="f.form.pristine || f.form.invalid">Sign Up</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
+

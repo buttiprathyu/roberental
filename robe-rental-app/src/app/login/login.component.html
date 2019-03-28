@@ -1,0 +1,32 @@
+<mat-card class="example-card">
+   <mat-card-header>
+     <mat-card-title>Sign In</mat-card-title>
+   </mat-card-header>
+  <form name="form" #f="ngForm" (ngSubmit)="f.form.valid">
+    <mat-card-content>
+      <table cellspacing="0" class="width50">
+        <tr>
+          <td>
+             <mat-form-field class="width100">
+               <input matInput type="text" placeholder="Email" [(ngModel)]="email" name="email" required email>     
+             </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="width100">
+              <input matInput type="password" placeholder="Password" [(ngModel)]="password" type="password" name="password"required>       
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
+    </mat-card-content>
+    <div class="errorMsg" *ngIf="showError">{{errorText}}</div>
+    <mat-card-actions>
+      <button mat-raised-button class="colorBtn" (click)="login()" [disabled]="f.form.pristine || f.form.invalid">Sign In</button>
+      <button mat-raised-button class="colorBtn" (click)="register()">Sign Up</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
+
