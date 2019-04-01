@@ -142,12 +142,64 @@ app.post('/api/imgupload', upload.single('robeImg'), (req, res) => {
 			if (err) throw err;
 			console.log("Image saving");
 		})
-
+		return res.status(200).json({
+			successMsg: 'Successfully Uploaded',
+			token: 'OK'
+		})
 	});
 })
 
+app.post('/api/myaccount', (req, res) => {
+	mongoose.connect(url, {
+		useNewUrlParser: true
+	}, function (err) {
+		if (err) throw err;
+		var myemail = req.body.email;
+		var myquery = { email: req.body.email };
+		var newvalues = { $set: {firstname: req.body.firstname, lastname: req.body.lastname, address1:req.body.address1,
+			address2:req.body.address2, city:req.body.city, state:req.body.state, zipcode: req.body.zipcode } };
+			User.updateOne(myquery, newvalues, function(err, res) {
+				if (err) throw err;
+				console.log("Account updated");
+			  });
+			  
+			  return res.status(200).json({
+				successMsg: 'Successfully Updated',
+				token: 'OK'
+			})
+	});
+})
 
+app.get('/api/myaccount', (req, res) => {
+	mongoose.connect(url, {
+		useNewUrlParser: true
+	}, function (err) {
+		if (err) throw err;
+		var myemail = req.query.email;
+		console.log("In get call");
+		console.log(req);
+		console.log(myemail);
+		var myquery = { email: myemail };
+		User.findOne(myquery, function(err, result) {
+			if (err) throw err;
+			console.log(result);
+			res.send(result);
+		  });
+		 
+	});
+})
 
+/*
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  firstname:{ type: String, required: true },
+  lastname:{ type: String, required: true },
+  address1:{ type: String},
+  address2:{ type: String},
+  city:{ type: String},
+  state:{ type: String},
+  zipcode:{ type: Number}
+*/
 app.listen(3000, () => console.log('Blog server running on port 3000!'))
 /*
 app.post('/api/login', (req, res) => {
