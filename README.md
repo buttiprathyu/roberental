@@ -17,7 +17,8 @@ Front-End code running and development
 Below are steps for using Mongodb
 
 1. Install mongodb for your system
-2. Start mongodb and make sure the port 27017 is open and listening (you can see that in the log or in the terminal). keep that terminal on.
+2. Start mongodb and make sure the port 27017 is open and listening (you can see that in the log or in the terminal). 
+    keep that terminal on.
 3.Open mongo shell
 4. type the following command to set up the database
 5. show dbs (use this command to check the number of database)
@@ -28,3 +29,5 @@ Below are steps for using Mongodb
 10. db.user.find().pretty() (to show all the o)bjects in the database)
 11. do nmp install in the server directory to install all the required modules
 12. start the frontend using the command [npm start] and backend using the command [node app.js]
+
+
