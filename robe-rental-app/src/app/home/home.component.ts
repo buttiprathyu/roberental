@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
+import { CartService } from '../cart/cart.service';
 
 
 export interface myRobe{
@@ -22,46 +23,29 @@ export interface myRobe{
 export class HomeComponent implements OnInit {
 
   robeList : myRobe;
-/*
-  robeList =  [
-    {
-      "email": "1@1.com",
-      "robeTitle": "A natural view",
-      "robeImg": "assets/paris.jpg",
-      "rentPrice": "100",
-      "buyPrice": "200",
-      "robeSize": "M",
-      "robeMaterialDesc" : "This robe has a round neck, long sleeves",
-      "robeMaterial" :  "Cotton",
-      "robeCare" : "Machine-wash"
+  s : string;
+  m: string;
+  l : string;
+  xl : string;
+  xxl : string;
+  xxxl :  string;
+  low : string;
+  high : string;
+  value:string;
+  sizeList : string;
+  options : [];
+  sizeOptions = [
+    {name:'S', value:'S', checked:false},
+    {name:'M', value:'M', checked:false},
+    {name:'L', value:'L', checked:false},
+    {name:'XL', value:'XL', checked:false},
+    {name:'XXL', value:'XXL', checked:false},
+    {name:'XXXL', value:'XXXL', checked:false}
+  ];
 
-    },
-    {
-      "email": "1@1.com",
-      "robeTitle": "Newspaper",
-      "robeImg": "assets/paris.jpg",
-      "rentPrice": "100",
-      "buyPrice": "200",
-      "robeSize": "M",
-      "robeMaterialDesc" : "This robe has a round neck, long sleeves",
-      "robeMaterial" :  "Cotton",
-      "robeCare" : "Machine-wash"
-    },
-    {
-      "email": "1@1.com",
-      "robeTitle": "Newspaper",
-      "robeImg": "assets/3e3240383b126b0d777ca7c66fc1a0a8",
-      "rentPrice": "100",
-      "buyPrice": "200",
-      "robeSize": "M",
-      "robeMaterialDesc" : "This robe has a round neck, long sleeves",
-      "robeMaterial" :  "Cotton",
-      "robeCare" : "Machine-wash"
-    }
-   ]
+  constructor(public homeService: HomeService, public cartService : CartService) {
 
-*/
-  constructor(public homeService: HomeService) {}
+  }
    getDetails() : void{
       this.homeService.getRobeDetails().then(data => {
             if(data){
@@ -73,6 +57,34 @@ export class HomeComponent implements OnInit {
         });
     }
 
+  selectPrice = function(value){
+    this.homeService.getRobeDetailsByPrice(value).then(data => {
+            if(data){
+              this.robeList = data;
+            } else {
+                //this.showError = true;
+                //this.errorText = "Could not fetch the garments. Please try again.";
+            }
+        });
+  }
+
+  selectSize = function(value){
+    this.Options = this.sizeOptions
+              .filter(opt => opt.checked)
+              .map(opt => opt.value);
+    this.homeService.getRobeDetailsBySize(this.Options).then(data => {
+            if(data){
+              this.robeList = data;
+            } else {
+                //this.showError = true;
+                //this.errorText = "Could not fetch the garments. Please try again.";
+            }
+        });
+  }
+
+  addtocart = function(myRobe){
+    this.cartService.setRobeList(myRobe);
+  }
 
   ngOnInit() { this.getDetails();}
 

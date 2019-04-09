@@ -14,9 +14,22 @@ export class HomeService {
 
 	getRobeDetails() {
 		const params = new HttpParams()
-        .set('email', localStorage.getItem('email'))
+        .set('email', localStorage.getItem('email'));
 	   // return this.http.get(this.getURL, {params}).toPromise().then((response) => response);  
 	    return this.http.get(this.getURL).toPromise().then((response) => response);     
 	}
+
+	getRobeDetailsByPrice(data){
+		const params = new HttpParams()
+		.set('price', data);
+		return this.http.get(this.getURL, {params}).toPromise().then((response) => response);
+	}
+
+	getRobeDetailsBySize(data){
+		const params = new HttpParams()
+		.set('size', data.toString());
+		return this.http.get(this.getURL, {params}).toPromise().then((response) => response);
+	}
+
 }
 

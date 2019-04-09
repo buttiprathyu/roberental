@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import { MyaccountService } from './myaccount.service';
 
 export interface myServerMsg{
@@ -51,8 +52,10 @@ export class MyaccountComponent implements OnInit {
 	materialdesc : string;
 	materialtype :  string;
 	care : string;
-
-    constructor(public myaccountService: MyaccountService) {}
+	routing : string;
+	account : string;
+	
+    constructor(public myaccountService: MyaccountService,private router: Router) {} 
 
 
     getPersonalDetails() : void {
@@ -60,30 +63,32 @@ export class MyaccountComponent implements OnInit {
     	this.email = localStorage.getItem('email');
     	this.firstname = localStorage.getItem('firstname');
     	this.lastname = localStorage.getItem('lastname');
+    	this.showMsg = false;
+		this.displayMsg = "";
 
 		// to get the details from myaccount API
 	  	this.myaccountService.getAccountDetails().then(data => {
 		    if(data){
 		    	this.personalDetails = data;
-		    	this.firstname = this.personalDetails.firstname;
-			  	this.lastname =  this.personalDetails.lastname;
+		    	this.firstname = this.personalDetails.firstname; 
+			  	this.lastname =  this.personalDetails.lastname; 
 			  	this.email = this.personalDetails.email;
 			  	this.address1 = this.personalDetails.address1;
 				this.address2 = this.personalDetails.address2;
 				this.city = this.personalDetails.city;
 				this.state = this.personalDetails.state;
 				this.zipcode = this.personalDetails.zipcode;
-		    }
+		    } 
 		});
   	}
-
+    
 
   	// to post the details to myaccount API
   	createAccount() : void {
   		console.log(this.firstname);
-  		let personalData = {
-	  		"firstname" : this.firstname,
-	  		"lastname": this.lastname,
+  		let personalData = { 
+	  		"firstname" : this.firstname, 
+	  		"lastname": this.lastname, 
 	  		"email": this.email ,
 	  		"address1" : this.address1,
 			"address2" : this.address2,
@@ -115,16 +120,16 @@ export class MyaccountComponent implements OnInit {
 
 	    	/*this.myaccountService.uploadImage(this.selectedFile.file).subscribe(
 	        (res) => {
-
+	        
 	        },
 	        (err) => {
-
+	        
 	        })*/
 		});
     	reader.readAsDataURL(file);
     	//reader.readAsDataURL(event.target.files[0]);
-	    reader.onload = (event) => {
-	      this.url = reader.result;
+	    reader.onload = (event) => { 
+	      this.url = reader.result; 
 	    }
 	}
 
@@ -142,24 +147,23 @@ export class MyaccountComponent implements OnInit {
       		"robeMaterialDesc" : this.materialdesc,
       		"robeMaterial" :  this.materialtype,
       		"robeCare" : this.care
-	      };
+	    };
 
-
+	    
 	    this.myaccountService.postUploadDetails(sellData).subscribe(
 	        (res) => {
-
+	        	this.router.navigate(["/"]);
 	       },
 	        (err) => {
-
+	        
 	    });
 	}
+	
+  	
 
+  	
+  ngOnInit(){this.getPersonalDetails();}
 
+ //
 
-
-  //ngOnInit(){}
-
- //this.getPersonalDetails();
-
- ngOnInit(){this.getPersonalDetails();}
 }

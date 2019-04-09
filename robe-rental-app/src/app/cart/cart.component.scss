@@ -1,4 +1,42 @@
-.about{
-	margin:20px;
-	border: 1px solid #F0F8FF;
+
+.heading{
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+	margin: 5%;
+}
+.width60{
+	width:60%;
+}
+.surround30{
+	padding-bottom: 3%;
+}
+
+.surround10{
+	padding-bottom: 1%;
+}
+.creditDiv{
+	border : 2px solid #ADD8E6;
+	padding : 3%;
+}
+
+.cartDiv{
+	border : 2px solid #ADD8E6;
+	padding : 3%;
+	margin : 1%;
+}
+.floatLeft{
+	float:left;
+}
+.floatRight{
+	float:right;
+}
+
+.colorBtn {
+	background-color : #ADD8E6;
+	color: black;
+}
+.margin5{
+	margin: 5%;
+}
+.surround{
+	padding : 1% 0%;
 }

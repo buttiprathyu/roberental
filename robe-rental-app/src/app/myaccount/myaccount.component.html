@@ -91,6 +91,16 @@
 				    </mat-form-field>
 				</div>
 				<div>
+					<mat-form-field class="width60">
+				       	<input matInput type="text" placeholder="Routing Number" [(ngModel)]="routing" name="routing" required>
+				    </mat-form-field>
+				</div>
+				<div>
+					<mat-form-field class="width60">
+				       	<input matInput type="text" placeholder="Account Number" [(ngModel)]="account" name="account" required>
+				    </mat-form-field>
+				</div>
+				<div>
 					<div class="width60">
 				       	<img [src]="url" height="200" *ngIf="url"> 
 						<label class="image-upload-container btn btn-bwm">

@@ -1,32 +1,80 @@
-<mat-card class="about">
-	<mat-card-title>Page Under Construction</mat-card-title>
-		<mat-card-content> This page will contain the list of the selected garment to rent. </mat-card-content>
-</mat-card>
+<div class="margin5">
+	<div class="heading"> Please review the items in the cart before you check out.</div>
+	<div class="heading" *ngIf="showMsg">{{showText}}</div>
+	<form name="personalform" #pf="ngForm" (ngSubmit)="pf.form.valid" class="accountDiv">
+		<mat-accordion>
+		  	<mat-expansion-panel class="margin5">
+			    <mat-expansion-panel-header>
+			      	<mat-panel-title>
+			        	Cart Details
+			      	</mat-panel-title>
+			      	<mat-panel-description>
+			        	Grand Total : $ {{cartTotal}}
+			      	</mat-panel-description>
+			    </mat-expansion-panel-header>
 
-<!-- <mat-tab label="Payment Details" (click)="getCardDetails()">
-		<form name="paymentform" #f="ngForm" (ngSubmit)="f.form.valid" class="accountDiv">				
-			<div class="creditDiv">
-				<div class="surround30">
-					<mat-form-field class="width60">
-				       	<input matInput type="text" placeholder="Credit Card Number" [(ngModel)]="creditcard" name="creditcard" pattern="[0-9]{16}" minlength="16" maxlength="16" required>  
-				       	<mat-hint>Accepts only 16-digit numbers</mat-hint>   
-				    </mat-form-field>
+			    <div class="cartDiv"  *ngFor="let robe of robeList" fxLayout="row" fxLayoutAlign="start center">
+			    	<div class="floatLeft" fxFlex="50%">
+						<div class="surround10">
+							<div> {{robe.robeMaterialDesc}}</div>
+						</div>
+						<div class="surround">
+							<!-- <mat-checkbox [(ngModel)]="robe.checkBuy">Buy</mat-checkbox> -->
+							<span class="margin5">Rent Price : {{robe.rentPrice}}</span>
+							<span class="margin5">Buy Price : {{robe.buyPrice}}</span>
+							<span class="margin5">Size : {{robe.robeSize}}</span>
+						</div>
+						<!-- <div class="surround10">
+							<mat-form-field class="width60">
+						       	<input matInput type="text" placeholder="Quantity" [(ngModel)]="robe.quantity" name="quantity" pattern="[1-5]{1}" minlength="1" maxlength="1" required>  
+						       	<mat-hint>Accepts only numbers from 1 to 5</mat-hint>   
+						    </mat-form-field>
+						</div> -->
+						<div class="surround30">
+							<button class="raised-btn" mat-raised-button (click)="deletefromcart(robe)">Delete</button>
+						</div>
+					</div>
+					<div class="floatRight" fxFlex="50%">
+						<img mat-card-image [src]="robe.robeImg" height="200">
+					</div>
 				</div>
-				<div class="surround30">
-					<mat-form-field class="width60">
-				       	<input matInput type="text" placeholder="Expiry Date" [(ngModel)]="expirydate" name="expirydate" pattern="[0-9]{1,2}\/[0-9]{2}" minlength="4" maxlength="5" required>  
-				       	<mat-hint>Accepts only in the format MM/YY</mat-hint>   
-				    </mat-form-field>
+
+		  	</mat-expansion-panel>
+		  	<mat-expansion-panel (opened)="panelOpenState = true"
+		                       (closed)="panelOpenState = false" class="margin5">
+			    <mat-expansion-panel-header>
+				      <mat-panel-title>
+				        	Payment Details
+				      </mat-panel-title>
+			      <!-- <mat-panel-description>
+			        Enter your payment Details
+			      </mat-panel-description> -->
+			    </mat-expansion-panel-header>
+			    <div class="creditDiv">
+					<div class="surround30">
+						<mat-form-field class="width60">
+					       	<input matInput type="text" placeholder="Credit Card Number" [(ngModel)]="creditcard" name="creditcard" pattern="[0-9]{16}" minlength="16" maxlength="16" required>  
+					       	<mat-hint>Accepts only 16-digit numbers</mat-hint>   
+					    </mat-form-field>
+					</div>
+					<div class="surround30">
+						<mat-form-field class="width60">
+					       	<input matInput type="text" placeholder="Expiry Date" [(ngModel)]="expirydate" name="expirydate" pattern="[0-9]{1,2}\/[0-9]{2}" minlength="4" maxlength="5" required>  
+					       	<mat-hint>Accepts only in the format MM/YY</mat-hint>   
+					    </mat-form-field>
+					</div>
+					<div class="surround30">
+					    <mat-form-field class="width60">
+					       	<input matInput type="text" placeholder="CVV" [(ngModel)]="cvv" name="cvv" pattern="[0-9]{3}" minlength="3" maxlength="3" required>  
+					       	<mat-hint>Accepts only 3-digit numbers</mat-hint>   
+					    </mat-form-field> 
+					</div>
 				</div>
-				<div class="surround30">
-				    <mat-form-field class="width60">
-				       	<input matInput type="text" placeholder="CVV" [(ngModel)]="cvv" name="cvv" pattern="[0-9]{3}" minlength="3" maxlength="3" required>  
-				       	<mat-hint>Accepts only 3-digit numbers</mat-hint>   
-				    </mat-form-field> 
-				</div>
-				<div>
-					<button mat-raised-button class="colorBtn" (click)="saveCard()" [disabled]="f.form.pristine || f.form.invalid">Save Payment Details</button>
-				</div>
-			</div>
-		</form>
-	</mat-tab> -->
+		  	</mat-expansion-panel>
+		</mat-accordion>
+		<div class="margin5">
+				<button mat-raised-button class="colorBtn" (click)="checkout()"  [disabled]="pf.form.pristine || pf.form.invalid">Check Out</button>
+		</div>
+	</form>
+</div>
+

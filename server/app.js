@@ -6,7 +6,8 @@ const url = 'mongodb://localhost:27017/robe'; //without authentication
 //const url ='mongodb://localhost:27017/robedata';
 var bcrypt = require('bcrypt');
 var multer = require('multer');
-var img_dir = '/home/roy/Desktop/software_eng_proj/roberental/robe-rental-app/src/assets';
+var img_dir = "/WorkSpace/MS CS/CSC 536 - SE/RobeRentalProject/robe-rental-app/src/assets"
+//var img_dir = '/home/roy/Desktop/software_eng_proj/roberental/robe-rental-app/src/assets';
 var upload = multer({
 	dest: img_dir
 });

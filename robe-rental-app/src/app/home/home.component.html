@@ -1,4 +1,17 @@
-<div class="container" >
+<div fxLayout="row" fxLayoutAlign="start center">
+  <div>
+    <div>Sort Garments by Price:</div>
+    <mat-radio-group aria-label="Select an option">       
+      <mat-radio-button value="low" name="price" (change) = "selectPrice('low')">Low to High </mat-radio-button>
+      <mat-radio-button value="high" name="price" (change) = "selectPrice('high')">High to Low </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div> Sort Garments by Size :</div>
+  <div *ngFor="let size of sizeOptions"> 
+    <mat-checkbox name ="size.name" value="size.value" [(ngModel)]="size.checked" (change)="selectSize(size)">{{size.value}}</mat-checkbox>
+  </div>
+</div>
+<div class="container">
  	<mat-card class="card-picture" *ngFor="let robe of robeList">
 	    <!-- <mat-card-title>{{picture.title}}</mat-card-title> -->
 	     <!-- <mat-icon fxFlex="10%">mode_edit</mat-icon> -->

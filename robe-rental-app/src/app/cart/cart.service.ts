@@ -20,15 +20,30 @@ import { map } from 'rxjs/operators';
 };*/
 
 
+
 export class CartService {
-	//public cartList : Array<myRobe>;
+	
   	constructor(private http: HttpClient) { }
-  	//this.cartList = [];
+  	private data = []; 
+    private postURL = '/api/cart' 
+  
+    setRobeList(value) {      
+      this.data.push(value); 
+      console.log(this.data); 
+    }  
+    
+    getRobeList() {  
+      return this.data;  
+    }  
 
-	//public setCartItems(): void{
-	//console.log("sadasdasd");
-	  	//this.cartList.push(robe);
-	//}
+    deleteRobe(value){
+        this.data.forEach( (item, index) => {
+           if(item === value) this.data.splice(index,1);
+        });
+    }
 
-	//console.log(this.cartList);
+    postCartDetails(requestData):Observable<any>{
+      let body = requestData;
+      return this.http.post<any>(this.postURL, body).pipe(map(response => {return response}));
+    }
 }

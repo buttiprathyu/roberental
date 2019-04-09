@@ -60,6 +60,7 @@ export class MyaccountService {
       formData.append('robeMaterialDesc', data.robeMaterialDesc);
       formData.append('robeMaterial', data.robeMaterial);
       formData.append('robeCare', data.robeCare);
+      
 
     	return this.http.post<any>(this.imgUploadURL, formData);//.pipe(map(response => {return response}));
  	  }
