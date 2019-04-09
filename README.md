@@ -1,5 +1,5 @@
 # roberental
-Robe Rental - A web application for renting clothes using HTML, CSS, Angular, Java, AWS.
+Robe Rental - A web application for renting clothes using HTML, CSS, Angular, NodeJS, ExpressJS, MongoDB, AWS.
 
 Front-End code running and development
 
