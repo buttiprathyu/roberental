@@ -6,28 +6,38 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class HomeService {
 
   	private getURL = 'api/robeList'; 
-   
+  	   
     constructor(private http: HttpClient) { }
 
 	getRobeDetails() {
+		let sizeArr = [];
 		const params = new HttpParams()
-        .set('email', localStorage.getItem('email'));
-	   // return this.http.get(this.getURL, {params}).toPromise().then((response) => response);  
-	    return this.http.get(this.getURL).toPromise().then((response) => response);     
+        .set('email', localStorage.getItem('email'))
+        .set('price', '0')
+        .set('size', sizeArr.toString());
+	   return this.http.get(this.getURL, {params}).toPromise().then((response) => response);  
+	    //return this.http.get(this.getURL).toPromise().then((response) => response);     
 	}
 
-	getRobeDetailsByPrice(data){
-		const params = new HttpParams()
-		.set('price', data);
-		return this.http.get(this.getURL, {params}).toPromise().then((response) => response);
-	}
+	getRobeDetailsByOrder(data){
+		let priceVal = '';
 
-	getRobeDetailsBySize(data){
+		if(data.price === 'low'){
+			priceVal = '-1';
+		} else if(data.price === 'high'){
+			priceVal = '1';
+		} else {
+			priceVal = '0';
+		}
+		
 		const params = new HttpParams()
-		.set('size', data.toString());
+		.set('email', localStorage.getItem('email'))
+		.set('price', priceVal)
+		.set('size', (data.size).toString());
 		return this.http.get(this.getURL, {params}).toPromise().then((response) => response);
 	}
 

@@ -15,6 +15,11 @@ export interface myRobe{
   robeCare? : string
 };
 
+export interface myParams {
+  price : string ;
+  size : any[];
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -34,6 +39,10 @@ export class HomeComponent implements OnInit {
   value:string;
   sizeList : string;
   options : [];
+  selectedPrice:string = 'none';
+  selectedSize : any[];
+  paramList : myParams;
+  
   sizeOptions = [
     {name:'S', value:'S', checked:false},
     {name:'M', value:'M', checked:false},
@@ -58,7 +67,11 @@ export class HomeComponent implements OnInit {
     }
 
   selectPrice = function(value){
-    this.homeService.getRobeDetailsByPrice(value).then(data => {
+    this.selectedPrice = value;
+    this.paramList = {};
+    this.paramList.price = this.selectedPrice;
+    this.paramList.size = (this.selectedSize)?this.selectedSize:[];
+    this.homeService.getRobeDetailsByOrder(this.paramList).then(data => {
             if(data){
               this.robeList = data;
             } else {
@@ -69,10 +82,15 @@ export class HomeComponent implements OnInit {
   }
 
   selectSize = function(value){
-    this.Options = this.sizeOptions
+    this.options = this.sizeOptions
               .filter(opt => opt.checked)
               .map(opt => opt.value);
-    this.homeService.getRobeDetailsBySize(this.Options).then(data => {
+    this.selectedSize = [this.options];
+    this.paramList = {};
+    
+    this.paramList.price = this.selectedPrice;
+    this.paramList.size = [this.options];
+    this.homeService.getRobeDetailsByOrder(this.paramList).then(data => {
             if(data){
               this.robeList = data;
             } else {
