@@ -104,8 +104,52 @@ app.get('/api/robeList', (req, res) => {
 	mongoose.connect(url, {
 		useNewUrlParser: true
 	}, function (err) {
-		//	console.log(req);
-		if (req.query.price == "low") {
+			var my_size=req.query.size.split(',');
+		
+			//var sizes_show= my_size.length==0?[ 'S', 'M', 'L', 'XL', 'XXL', 'XXXL' ]:my_size;
+			console.log(req.query.size.split(','));
+			
+			if(my_size[0]!='')
+			{
+				console.log("By size");
+				console.log(my_size);
+				Robe_image.find({
+					"robeSize": my_size
+				}).sort({
+					"rentPrice": (req.query.price*-1) ,
+				}).exec(function (err, all_images) {
+					if (err) throw err;
+					else if (!all_images) {
+						var err = new Error('No images');
+						err.status = 401;
+						return callback(err);
+					}
+					console.log("show ascending images");
+					//	console.log(all_images);
+					res.send(all_images);
+				})
+			}
+			else
+			{
+				console.log("Hello");
+				Robe_image.find().sort({
+					"rentPrice": (req.query.price*-1) ,
+				}).exec(function (err, all_images) {
+					if (err) throw err;
+					else if (!all_images) {
+						var err = new Error('No images');
+						err.status = 401;
+						return callback(err);
+					}
+					console.log("show ascending images");
+					//	console.log(all_images);
+					res.send(all_images);
+				})
+			}
+
+
+		/*	
+		if (req.query.price == 1) {
 			console.log("Low call");
 			Robe_image.find().sort({
 				"rentPrice": -1,
@@ -121,7 +165,7 @@ app.get('/api/robeList', (req, res) => {
 				//	console.log(all_images);
 				res.send(all_images);
 			})
-		} else if (req.query.price == "high") {
+		} else if (req.query.price == 1) {
 			console.log("High call");
 			Robe_image.find().sort({
 				"rentPrice": 1,
@@ -179,7 +223,7 @@ app.get('/api/robeList', (req, res) => {
 				//		console.log(all_images);
 				res.send(all_images);
 			})
-		}
+		}*/
 	});
 })
 
@@ -305,7 +349,7 @@ app.post('/api/cart', (req, res) => {
 		if (err) throw err;
 		console.log(req.body.robeList[0].robeImg);
 		console.log(req.body.robeList[0]._id);
-		//console.log(req.body.robeList[0].robeImg);
+		console.log(req);
 		var mypath = '../robe-rental-app/src/' + req.body.robeList[0].robeImg;
 		//console.log(mypath);
 		Robe_image.findOneAndDelete({

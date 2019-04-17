@@ -9,8 +9,8 @@ import { map } from 'rxjs/operators';
 
 export class HomeService {
 
-  	private getURL = 'api/robeList'; 
-  	   
+  	private getURL = 'api/robeList';
+
     constructor(private http: HttpClient) { }
 
 	getRobeDetails() {
@@ -19,8 +19,8 @@ export class HomeService {
         .set('email', localStorage.getItem('email'))
         .set('price', '0')
         .set('size', sizeArr.toString());
-	   return this.http.get(this.getURL, {params}).toPromise().then((response) => response);  
-	    //return this.http.get(this.getURL).toPromise().then((response) => response);     
+	   return this.http.get(this.getURL, {params}).toPromise().then((response) => response);
+	    //return this.http.get(this.getURL).toPromise().then((response) => response);
 	}
 
 	getRobeDetailsByOrder(data){
@@ -33,7 +33,7 @@ export class HomeService {
 		} else {
 			priceVal = '0';
 		}
-		
+
 		const params = new HttpParams()
 		.set('email', localStorage.getItem('email'))
 		.set('price', priceVal)
